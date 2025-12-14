@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/simulation', [SimulationController::class, 'index'])->name('simulation.index');
     Route::post('/simulation', [SimulationController::class, 'calculate'])->name('simulation.calculate');
+    Route::get('/simulation/comparing', [SimulationController::class, 'comparing'])->name('simulation.comparing');
+    Route::post('/simulation/comparing', [SimulationController::class, 'store'])->name('simulation.store');
     Route::get('/simulation/history', [SimulationController::class, 'history'])->name('simulation.history');
     Route::post('/simulation/history', [SimulationController::class, 'store'])->name('simulation.store');
 });

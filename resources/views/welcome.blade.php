@@ -23,8 +23,8 @@
 
 <body class="font-sans antialiased text-black">
 
-    <nav class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav id="navbar" class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+        <div id="navbarContent" class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <!-- Logo Section -->
             <a href="/" class="flex items-center">
                 <img src="{{ asset('images/Logo.svg') }}" alt="Logo" class="w-12 h-12">
@@ -59,7 +59,7 @@
 
             <!-- Menu Items -->
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-default">
-                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-neutral-primary md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
                         <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-[#129661] md:p-0" aria-current="page">Home</a>
                     </li>
@@ -212,5 +212,59 @@
         ScrollReveal({distance: '30px', duration: 800, easing: 'ease-out',});
         ScrollReveal().reveal('.reveal', { origin: 'bottom' });
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector("nav");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+            navbar.classList.remove("bg-transparent");
+            navbar.classList.add("bg-[#f5f5f5]/80", "backdrop-blur");
+        } else {
+            navbar.classList.remove("bg-[#f5f5f5]/80", "backdrop-blur");
+            navbar.classList.add("bg-transparent");
+        }
+    });
+});
+</script>
+<script>
+    const navbar = document.getElementById("navbar");
+    const navbarContent = document.getElementById("navbarContent");
+
+    window.addEventListener("scroll", function () {
+    if (window.scrollY === 0) {
+        // Posisi paling atas → padding besar
+        navbarContent.classList.remove("");
+        navbarContent.classList.add("");
+    } else {
+        // Posisi scroll → padding lebih kecil
+        navbarContent.classList.remove("");
+        navbarContent.classList.add("");
+    }
+});
+
+let lastScrollTop = 0;
+const scrollThreshold = 200;
+
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > scrollThreshold) {
+        if (scrollTop > lastScrollTop) {
+            // Scroll Down
+            navbar.style.top = "-100px";
+            navbar.style.transition = "top 0.4s ease";
+        } else {
+            // Scroll Up
+            navbar.style.top = "0";
+            navbar.style.transition = "top 0.4s ease";
+        }
+    } else {
+        // Dalam threshold, navbar tetap visible
+        navbar.style.top = "0";
+    }
+    lastScrollTop = scrollTop;
+});
+</script>
 </body>
 </html>
