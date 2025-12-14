@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SimulationController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminBankController;
+use App\Http\Controllers\Admin\AdminSimulationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +32,22 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/simulation/store', [SimulationController::class, 'store'])->name('simulation.store');
     Route::get('/simulation/history', [SimulationController::class, 'history'])->name('simulation.history');
+});
+
+// ==================== ADMIN ROUTES ====================
+
+// Admin Auth (tanpa middleware)
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+});
+
+// Admin Protected Routes
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('banks', AdminBankController::class);
+    Route::get('/simulations', [AdminSimulationController::class, 'index'])->name('simulations.index');
 });
 
 require __DIR__ . '/auth.php';
