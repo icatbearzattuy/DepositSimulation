@@ -38,63 +38,8 @@
                         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
                             <h3 class="text-lg font-semibold text-gray-900 mb-6">Masukkan Data Simulasi</h3>
                             
-                            <form action="{{ route('simulation.calculate') }}" method="POST" class="space-y-6">
+                            <form action="{{ route('simulation.compare') }}" method="POST" class="space-y-6">
                                 @csrf
-                                
-                                <!-- Dropdown Bank -->
-                                <div x-data="{ open: false, selected: 'Pilih Bank', bankId: '' }">
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        Bank <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="relative">
-                                        <button type="button"
-                                            @click="open = !open"
-                                            class="w-full flex justify-between items-center px-4 py-3 text-left
-                                                border border-gray-300 rounded-lg bg-white hover:bg-gray-50
-                                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                                                transition duration-150"
-                                        >
-                                            <span x-text="selected" class="text-sm text-gray-700"></span>
-                                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-200" 
-                                                :class="{ 'rotate-180': open }" 
-                                                xmlns="http://www.w3.org/2000/svg" 
-                                                fill="none" 
-                                                viewBox="0 0 24 24" 
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <div x-show="open" 
-                                            @click.outside="open = false"
-                                            x-transition:enter="transition ease-out duration-100"
-                                            x-transition:enter-start="transform opacity-0 scale-95"
-                                            x-transition:enter-end="transform opacity-100 scale-100"
-                                            x-transition:leave="transition ease-in duration-75"
-                                            x-transition:leave-start="transform opacity-100 scale-100"
-                                            x-transition:leave-end="transform opacity-0 scale-95"
-                                            class="absolute z-20 mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg"
-                                        >
-                                            @foreach ($banks as $bank)
-                                                <button type="button"
-                                                    @click="
-                                                        selected = '{{ $bank->nama_bank }}';
-                                                        bankId = '{{ $bank->bank_id }}';
-                                                        open = false;
-                                                    "
-                                                    class="block w-full text-left px-4 py-3 hover:bg-blue-50 text-sm text-gray-700
-                                                        first:rounded-t-lg last:rounded-b-lg transition duration-150"
-                                                >
-                                                    <div class="flex justify-between items-center">
-                                                        <span class="font-medium">{{ $bank->nama_bank }}</span>
-                                                        <span class="text-xs text-blue-600 font-semibold">{{ $bank->suku_bunga_dasar }}%</span>
-                                                    </div>
-                                                </button>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <input type="hidden" name="bank_id" :value="bankId" required>
-                                </div>
-
                                 <!-- Input Nominal -->
                                 <div>
                                     <label for="nominal_deposito" class="block text-sm font-medium text-gray-700 mb-2">
@@ -225,20 +170,6 @@
                                         </div>
                                     @endforeach
                                 </div>
-
-                        <!-- Form Simpan Per Bank -->
-                        <form action="{{ route('simulation.store') }}" method="POST" class="mt-4">
-                            @csrf
-                            <input type="hidden" name="bank_id" value="{{ $result['bank_id'] }}">
-                            <input type="hidden" name="nominal_deposito" value="{{ $nominal }}">
-                            <input type="hidden" name="jangka_waktu_bulan" value="{{ $jangka_waktu }}">
-                            <button type="submit" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition duration-150 text-sm flex items-center justify-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
-                                </svg>
-                                Simpan {{ $result['nama_bank'] }}
-                            </button>
-                        </form>
                             </div>
                         @else
                             <div class="bg-gray-50 rounded-lg p-6 border-2 border-dashed border-gray-300 h-full flex flex-col items-center justify-center text-center">
