@@ -99,7 +99,7 @@
         </div>
     </section>
     <section class="mx-24 mt-16 flex gap-16 justify-center">
-    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-lg hover:shadow-emerald-400 transition-all duration-500 ease-out hover:scale-105 hover:border-emerald-400">
+    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-lg hover:shadow-green-500 transition-all duration-500 ease-out hover:scale-105 hover:border-green-500">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bank w-16 h-16 mb-3 text-[#047b4c]" viewBox="0 0 16 16">
             <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
         </svg>
@@ -108,7 +108,7 @@
         </a>
         <p class="mb-3 text-body">Your app directly fulfills the client's need by showing a side-by-side comparison of 3 different banks with varying interest rates in one place.</p>
     </div>
-    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-lg hover:shadow-emerald-400 transition-all duration-500 ease-out hover:scale-105 hover:border-emerald-400">
+    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-lg hover:shadow-green-500 transition-all duration-500 ease-out hover:scale-105 hover:border-green-500">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bank w-16 h-16 mb-3 text-[#047b4c]" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
         </svg>
@@ -117,7 +117,7 @@
         </a>
         <p class="mb-3 text-body">We use industry-standard calculation logic that is validated and executed securely on the server (backend), ensuring every simulation result is reliable.</p>
     </div>
-    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-xl hover:shadow-emerald-400 transition-all duration-500 ease-out hover:scale-105 hover:border-emerald-400">
+    <div class="bg-white block max-w-sm p-6 border border-default rounded-base shadow-md hover:shadow-xl hover:shadow-green-500 transition-all duration-500 ease-out hover:scale-105 hover:border-green-500">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bank w-16 h-16 mb-3 text-[#047b4c]" viewBox="0 0 16 16">
             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
         </svg>
