@@ -66,8 +66,17 @@ class SimulationController extends Controller
     {
         $banks = Bank::all();
 
+        $results = session('compare_results');
+        $nominal = session('compare_nominal');
+        $jangka_waktu = session('compare_jangka_waktu');
+
+        session()->forget(['compare_results', 'compare_nominal', 'compare_jangka_waktu']);
+
         return view('simulation.compare', [
             'banks' => $banks,
+            'results' => $results,
+            'nominal' => $nominal,
+            'jangka_waktu' => $jangka_waktu,
         ]);
     }
 
@@ -76,6 +85,7 @@ class SimulationController extends Controller
     {
         $request->validate([
             'nominal_deposito' => 'required|numeric|min:1000000',
+            'jangka_waktu_bulan' => 'required|numeric|min:1|max:120',
         ]);
 
         $nominal = $request->nominal_deposito;
