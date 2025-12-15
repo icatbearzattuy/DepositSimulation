@@ -14,7 +14,18 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = \Illuminate\Support\Facades\Auth::user();
+    $stats = [
+        'total_simulations' => \App\Models\Simulation::where('user_id', $user->user_id)->count(),
+        'total_bunga' => \App\Models\Simulation::where('user_id', $user->user_id)->sum('bunga_diterima'),
+        'total_deposito' => \App\Models\Simulation::where('user_id', $user->user_id)->sum('nominal_deposito'),
+    ];
+    $recent_simulations = \App\Models\Simulation::with('bank')
+        ->where('user_id', $user->user_id)
+        ->orderBy('waktu_simulasi', 'desc')
+        ->limit(5)
+        ->get();
+    return view('dashboard', compact('stats', 'recent_simulations'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -36,6 +47,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/simulation/pdf', [CetakpdfController::class, 'cetakPdf'])
         ->name('simulation.pdf');
+    Route::get('/simulation/history-pdf', [CetakpdfController::class, 'historyPdf'])
+        ->name('simulation.history-pdf');
 });
 
 // ==================== ADMIN ROUTES ====================

@@ -190,7 +190,6 @@
                             </form>
                         </div>
                     </div>
-
                     <!-- Result Section (Kanan) -->
                     <div>
                         @if (!empty($results))
@@ -274,10 +273,8 @@
 function formatRupiah(el) {
     // ambil angka saja
     let value = el.value.replace(/\D/g, '');
-
     // simpan angka asli ke hidden input
     document.getElementById('nominal_real').value = value;
-
     // format ke rupiah
     el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }

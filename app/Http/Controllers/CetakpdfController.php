@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bank;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Simulation;
 
 class CetakpdfController extends Controller
 {
@@ -28,5 +30,21 @@ class CetakpdfController extends Controller
     ]);
 
     return $pdf->download('simulasi-deposito.pdf');
+  }
+
+  public function historyPdf()
+  {
+    $simulations = Simulation::with('bank')
+      ->where('user_id', Auth::id())
+      ->orderBy('waktu_simulasi', 'desc')
+      ->get();
+
+    $pdf = app('dompdf.wrapper');
+    $pdf->loadView('simulation.history-pdf', [
+      'simulations' => $simulations,
+    ]);
+
+    return $pdf->download('history-simulasi.pdf');
+    // atau ->stream()
   }
 }

@@ -14,6 +14,8 @@ class User extends Authenticatable
     //Database Table
     protected $table = 'users';
     protected $primaryKey = 'user_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public $timestamps = false;
 
     /**

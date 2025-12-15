@@ -24,9 +24,7 @@
         </nav>
         <section class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-bold tracking-tight text-heading md:text-4xl">History Simulasi</h2>
-            <form action="">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Cetak PDF</button>
-            </form>
+            <a href="{{ route('simulation.history-pdf') }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Cetak PDF</a>
         </section>
         <div class="mt-12">
             <div class="overflow-hidden bg-white shadow sm:rounded-lg">

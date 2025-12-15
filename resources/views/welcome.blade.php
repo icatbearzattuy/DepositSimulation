@@ -64,13 +64,10 @@
                         <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-[#129661] md:p-0" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">About</a>
+                        <a href="#benefit" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Benefit</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Deposit</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Contact</a>
+                        <a href="{{ route('simulation.index') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Deposit</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +90,7 @@
         
     </div>
     </section>
-    <section class="flex justify-center">
+    <section class="flex justify-center" id="benefit">
         <div class="max-w-4xl pt-10 text-center">
             <h1 class="reveal text-6xl font-bold leading-tight">
             Why Choose <span class="text-[#047b4c]">UrDeposite</span> ?
