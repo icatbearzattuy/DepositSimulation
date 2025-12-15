@@ -11,7 +11,7 @@
 
         <!-- Nama Lengkap -->
         <div>
-            <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
+            <x-input-label for="nama_lengkap" :value="__('Full Name')" />
             <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap')" required autofocus autocomplete="nama_lengkap" />
             <x-input-error :messages="$errors->get('nama_lengkap')" class="mt-2" />
         </div>

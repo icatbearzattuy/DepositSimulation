@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 
-@section('title', 'Semua Simulasi')
+@section('title', 'All Simulations')
 
 @section('content')
     <div class="bg-white rounded-xl shadow-sm border border-gray-100">
         <!-- Header with Filters -->
         <div class="p-6 border-b border-gray-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Daftar Semua Simulasi</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">List of All Simulations</h3>
             
             <!-- Filter Form -->
             <form action="{{ route('admin.simulations.index') }}" method="GET" class="flex flex-wrap items-end gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Bank</label>
                     <select name="bank_id" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="">Semua Bank</option>
+                        <option value="">All Banks</option>
                         @foreach($banks as $bank)
                             <option value="{{ $bank->bank_id }}" {{ request('bank_id') == $bank->bank_id ? 'selected' : '' }}>
                                 {{ $bank->nama_bank }}
@@ -42,10 +42,10 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bank</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nominal</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jangka Waktu</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bunga</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Akhir</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duration</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Interest</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Final</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Time</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -55,14 +55,14 @@
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->user->nama_lengkap ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $sim->bank->nama_bank ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">Rp {{ number_format($sim->nominal_deposito, 0, ',', '.') }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} Bulan</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} Months</td>
                             <td class="px-6 py-4 text-sm text-blue-600 font-medium">Rp {{ number_format($sim->bunga_diterima, 0, ',', '.') }}</td>
                             <td class="px-6 py-4 text-sm font-semibold text-green-600">Rp {{ number_format($sim->total_akhir, 0, ',', '.') }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $sim->waktu_simulasi }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="px-6 py-8 text-center text-gray-500">Belum ada data simulasi</td>
+                            <td colspan="8" class="px-6 py-8 text-center text-gray-500">No simulation data yet</td>
                         </tr>
                     @endforelse
                 </tbody>

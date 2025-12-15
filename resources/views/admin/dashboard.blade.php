@@ -13,7 +13,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm text-gray-500">Total Bank</p>
+                    <p class="text-sm text-gray-500">Total Banks</p>
                     <p class="text-3xl font-bold text-gray-900">{{ $stats['total_banks'] }}</p>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm text-gray-500">Total Simulasi</p>
+                    <p class="text-sm text-gray-500">Total Simulations</p>
                     <p class="text-3xl font-bold text-gray-900">{{ $stats['total_simulations'] }}</p>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm text-gray-500">Total User</p>
+                    <p class="text-sm text-gray-500">Total Users</p>
                     <p class="text-3xl font-bold text-gray-900">{{ $stats['total_users'] }}</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
     <!-- Recent Simulations -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100">
         <div class="p-6 border-b border-gray-100">
-            <h3 class="text-lg font-semibold text-gray-900">Simulasi Terbaru</h3>
+            <h3 class="text-lg font-semibold text-gray-900">Recent Simulations</h3>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full">
@@ -60,9 +60,9 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bank</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nominal</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jangka Waktu</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Akhir</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duration</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Final</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Time</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
@@ -71,13 +71,13 @@
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->user->nama_lengkap ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->bank->nama_bank ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">Rp {{ number_format($sim->nominal_deposito, 0, ',', '.') }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} bulan</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} months</td>
                             <td class="px-6 py-4 text-sm font-semibold text-green-600">Rp {{ number_format($sim->total_akhir, 0, ',', '.') }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $sim->waktu_simulasi }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="px-6 py-8 text-center text-gray-500">Belum ada data simulasi</td>
+                            <td colspan="6" class="px-6 py-8 text-center text-gray-500">No simulation data yet</td>
                         </tr>
                     @endforelse
                 </tbody>

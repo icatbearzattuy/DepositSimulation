@@ -32,7 +32,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm text-gray-500">Total Simulasi</p>
+                        <p class="text-sm text-gray-500">Total Simulations</p>
                         <p class="text-3xl font-bold text-gray-900">{{ $stats['total_simulations'] }}</p>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
     <div class="max-w-7xl mx-auto sm:px-6 mt-8">
         <div class="bg-white rounded-xl shadow-sm border border-gray-100">
             <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-900">Simulasi Terbaru</h3>
-                <a href="{{ route('simulation.history') }}" class="text-sm text-[#129661] hover:underline">Lihat Semua →</a>
+                <h3 class="text-lg font-semibold text-gray-900">Recent Simulations</h3>
+                <a href="{{ route('simulation.history') }}" class="text-sm text-[#129661] hover:underline">View All →</a>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full">
@@ -72,9 +72,9 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bank</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nominal</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tenor</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bunga</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Interest</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Time</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
@@ -82,7 +82,7 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $sim->bank->nama_bank ?? 'N/A' }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-900">Rp {{ number_format($sim->nominal_deposito, 0, ',', '.') }}</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} Bulan</td>
+                                <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} Months</td>
                                 <td class="px-6 py-4 text-sm font-medium text-blue-600">Rp {{ number_format($sim->bunga_diterima, 0, ',', '.') }}</td>
                                 <td class="px-6 py-4 text-sm font-semibold text-green-600">Rp {{ number_format($sim->total_akhir, 0, ',', '.') }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-500">{{ $sim->waktu_simulasi }}</td>
@@ -90,7 +90,7 @@
                         @empty
                             <tr>
                                 <td colspan="6" class="px-6 py-8 text-center text-gray-500">
-                                    Belum ada simulasi. <a href="{{ route('simulation.index') }}" class="text-[#129661] hover:underline">Buat simulasi pertama!</a>
+                                    No simulations yet. <a href="{{ route('simulation.index') }}" class="text-[#129661] hover:underline">Create your first simulation!</a>
                                 </td>
                             </tr>
                         @endforelse

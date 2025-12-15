@@ -17,14 +17,14 @@
                         <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
-                        <span class="text-sm font-medium text-gray-500">History Simulasi</span>
+                        <span class="text-sm font-medium text-gray-500">Simulation History</span>
                     </div>
                 </li>
             </ol>
         </nav>
         <section class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold tracking-tight text-heading md:text-4xl">History Simulasi</h2>
-            <a href="{{ route('simulation.history-pdf') }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Cetak PDF</a>
+            <h2 class="text-3xl font-bold tracking-tight text-heading md:text-4xl">Simulation History</h2>
+            <a href="{{ route('simulation.history-pdf') }}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Print PDF</a>
         </section>
         <div class="mt-12">
             <div class="overflow-hidden bg-white shadow sm:rounded-lg">
@@ -45,12 +45,12 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $simulation->bank->nama_bank }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ number_format($simulation->nominal_deposito, 0, ',', '.') }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $simulation->jangka_waktu_bulan }} Bulan</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $simulation->jangka_waktu_bulan }} Months</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ number_format($simulation->total_akhir, 0, ',', '.') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 {{ $simulation->waktu_simulasi }}
                                 </td>
-                            </tr>
+                            </tr> 
                         @endforeach
                     </tbody>
                 </table>

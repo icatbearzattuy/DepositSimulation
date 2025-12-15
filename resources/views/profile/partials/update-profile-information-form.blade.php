@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
+            <x-input-label for="nama_lengkap" :value="__('Full Name')" />
             <x-text-input id="nama_lengkap" name="nama_lengkap" type="text" class="mt-1 block w-full" :value="old('nama_lengkap', $user->nama_lengkap)" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('nama_lengkap')" />
         </div>

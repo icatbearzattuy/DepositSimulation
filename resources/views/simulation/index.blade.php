@@ -36,13 +36,13 @@
                     <!-- Form Section -->
                     <div>
                         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Masukkan Data Simulasi</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Enter Simulation Data</h3>
                             
                             <form action="{{ route('simulation.index') }}" method="POST" class="space-y-6">
                                 @csrf
                                 
                                 <!-- Dropdown Bank -->
-                                <div x-data="{ open: false, selected: 'Pilih Bank', bankId: '' }">
+                                <div x-data="{ open: false, selected: 'Choose Bank', bankId: '' }">
                                     <label class="block text-sm font-medium text-gray-700 mb-2">
                                         Bank <span class="text-red-500">*</span>
                                     </label>
@@ -86,7 +86,7 @@
                                                 >
                                                     <div class="flex justify-between items-center">
                                                         <span class="font-medium">{{ $bank->nama_bank }}</span>
-                                                        <span class="text-xs text-blue-600 font-semibold">{{ $bank->suku_bunga_dasar }}%</span>
+                                                        <span class="text-xs text-green-600 font-semibold">{{ $bank->suku_bunga_dasar }}%</span>
                                                     </div>
                                                 </button>
                                             @endforeach
@@ -98,7 +98,7 @@
                                 <!-- Input Nominal -->
                                 <div>
                                     <label for="nominal_deposito" class="block text-sm font-medium text-gray-700 mb-2">
-                                        Nominal Deposito <span class="text-red-500">*</span>
+                                        Deposit Nominal <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">Rp</span>
@@ -120,13 +120,13 @@
                                             id="nominal_real"
                                         >
                                     </div>
-                                    <p class="mt-1 text-xs text-gray-500">Minimal Rp 1.000.000</p>
+                                    <p class="mt-1 text-xs text-gray-500">Minimum Rp 1.000.000</p>
                                 </div>
 
                                 <!-- Dropdown Jangka Waktu -->
-                                <div x-data="{ open: false, selected: 'Pilih Jangka Waktu', bulan: '' }">
+                                <div x-data="{ open: false, selected: 'Choose Duration', bulan: '' }">
                                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        Jangka Waktu <span class="text-red-500">*</span>
+                                        Duration <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <button type="button"
@@ -159,14 +159,14 @@
                                             @foreach ([3, 6, 9, 12, 18, 24, 36, 48, 60] as $month)
                                                 <button type="button"
                                                     @click="
-                                                        selected = '{{ $month }} Bulan';
+                                                        selected = '{{ $month }} Months';
                                                         bulan = '{{ $month }}';
                                                         open = false;
                                                     "
                                                     class="block w-full text-left px-4 py-3 hover:bg-blue-50 text-sm text-gray-700
                                                         first:rounded-t-lg last:rounded-b-lg transition duration-150"
                                                 >
-                                                    {{ $month }} Bulan ({{ number_format($month / 12, 1) }} Tahun)
+                                                    {{ $month }} Months ({{ number_format($month / 12, 1) }} Years)
                                                 </button>
                                             @endforeach
                                         </div>
@@ -185,7 +185,7 @@
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                     </svg>
-                                    Hitung Simulasi
+                                    Calculate Simulation
                                 </button>
                             </form>
                         </div>
@@ -193,18 +193,18 @@
                     <!-- Result Section (Kanan) -->
                     <div>
                         @if (!empty($results))
-                            <div class="bg-green-50 rounded-lg p-6 border border-green-200">
+                            <div class="bg-white rounded-lg p-6 border border-gray-200">
                                 <div class="flex items-center gap-2 mb-6">
                                     <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <h3 class="text-lg font-semibold text-gray-900">Hasil Perbandingan</h3>
+                                    <h3 class="text-lg font-semibold text-gray-900">Simulation Result</h3>
                                 </div>
 
-                                <div class="mb-4 p-4 bg-white rounded-lg border border-green-100">
-                                    <p class="text-sm text-gray-600">Nominal Deposito</p>
+                                <div class="mb-4 p-4 bg-white rounded-lg border border-gray-300">
+                                    <p class="text-sm text-gray-600">Deposit Nominal</p>
                                     <p class="text-xl font-bold text-gray-900">Rp {{ number_format($nominal, 0, ',', '.') }}</p>
-                                    <p class="text-sm text-gray-600 mt-2">Jangka Waktu: <span class="font-semibold">{{ $jangka_waktu }} Bulan</span></p>
+                                    <p class="text-sm text-gray-600 mt-2">Duration: <span class="font-semibold">{{ $jangka_waktu }} Months</span></p>
                                 </div>
 
                                 <div class="space-y-3">
@@ -213,16 +213,16 @@
                                             <div class="flex justify-between items-start mb-3">
                                                 <div>
                                                     <h4 class="text-lg font-bold text-gray-900">{{ $result['nama_bank'] }}</h4>
-                                                    <p class="text-sm text-gray-500">Suku Bunga: {{ $result['suku_bunga_dasar'] }}%</p>
+                                                    <p class="text-sm text-gray-500">Interest Rate: {{ $result['suku_bunga_dasar'] }}%</p>
                                                 </div>
                                             </div>
                                             <div class="space-y-2 pt-3 border-t border-gray-100">
                                                 <div class="flex justify-between items-center">
-                                                    <span class="text-sm text-gray-600">Bunga Diterima</span>
+                                                    <span class="text-sm text-gray-600">Interest Earned</span>
                                                     <span class="text-lg font-semibold text-green-600">Rp {{ number_format($result['bunga_diterima'], 0, ',', '.') }}</span>
                                                 </div>
                                                 <div class="flex justify-between items-center pt-2 border-t border-gray-100">
-                                                    <span class="text-sm font-semibold text-gray-700">Total Akhir</span>
+                                                    <span class="text-sm font-semibold text-gray-700">Total Final</span>
                                                     <span class="text-xl font-bold text-blue-600">Rp {{ number_format($result['total_akhir'], 0, ',', '.') }}</span>
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@
 
                                     <button type="submit"
                                         class="mt-4 px-4 py-2 bg-red-600 text-white rounded">
-                                        Cetak PDF
+                                        Print PDF
                                     </button>
                                 </form>
                         <!-- Form Simpan Per Bank -->
@@ -253,7 +253,7 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
                                 </svg>
-                                Simpan {{ $result['nama_bank'] }}
+                                Save {{ $result['nama_bank'] }}
                             </button>
                         </form>
                             </div>
@@ -262,8 +262,8 @@
                                 <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                 </svg>
-                                <h3 class="text-lg font-medium text-gray-500 mb-2">Belum Ada Hasil</h3>
-                                <p class="text-sm text-gray-400">Isi form di sebelah kiri untuk melihat hasil perbandingan deposito</p>
+                                <h3 class="text-lg font-medium text-gray-500 mb-2">No Results Yet</h3>
+                                <p class="text-sm text-gray-400">Fill in the form on the left to see deposit simulation results</p>
                             </div>
                         @endif
                     </div>

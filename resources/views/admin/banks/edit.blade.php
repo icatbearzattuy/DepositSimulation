@@ -15,7 +15,7 @@
 
                 <div>
                     <label for="nama_bank" class="block text-sm font-medium text-gray-700 mb-2">
-                        Nama Bank <span class="text-red-500">*</span>
+                        Bank Name <span class="text-red-500">*</span>
                     </label>
                     <input 
                         type="text" 
@@ -32,7 +32,7 @@
 
                 <div>
                     <label for="suku_bunga_dasar" class="block text-sm font-medium text-gray-700 mb-2">
-                        Suku Bunga Dasar (%) <span class="text-red-500">*</span>
+                        Base Interest Rate (%) <span class="text-red-500">*</span>
                     </label>
                     <input 
                         type="number" 
@@ -58,7 +58,7 @@
                         Update
                     </button>
                     <a href="{{ route('admin.banks.index') }}" class="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition">
-                        Batal
+                        Cancel
                     </a>
                 </div>
             </form>
