@@ -38,7 +38,7 @@
                         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
                             <h3 class="text-lg font-semibold text-gray-900 mb-6">Masukkan Data Simulasi</h3>
                             
-                            <form action="{{ route('simulation.calculate') }}" method="POST" class="space-y-6">
+                            <form action="{{ route('simulation.index') }}" method="POST" class="space-y-6">
                                 @csrf
                                 
                                 <!-- Dropdown Bank -->
@@ -225,7 +225,17 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                <form action="{{ route('simulation.pdf') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="bank_id" value="{{ $result['bank_id'] }}">
+                                    <input type="hidden" name="nominal_deposito" value="{{ $nominal }}">
+                                    <input type="hidden" name="jangka_waktu_bulan" value="{{ $jangka_waktu }}">
 
+                                    <button type="submit"
+                                        class="mt-4 px-4 py-2 bg-red-600 text-white rounded">
+                                        Cetak PDF
+                                    </button>
+                                </form>
                         <!-- Form Simpan Per Bank -->
                         <form action="{{ route('simulation.store') }}" method="POST" class="mt-4">
                             @csrf

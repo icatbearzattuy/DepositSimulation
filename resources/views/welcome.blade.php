@@ -79,6 +79,7 @@
 
     <!-- Main Content -->
     <main class="pt-24 px-24 smooth-scroll">
+    <section class="flex">
     <div class="min-h-screen px-24 max-w-3xl text-left pt-24">
         <h1 class="reveal mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl leading-tight md:leading-snug lg:leading-normal lg:tracking-normal">
             Make Smarter <span class="text-[#047b4c]">Deposit</span> Decisions.
@@ -88,6 +89,10 @@
         </p>
         <button onclick="window.location.href = '/dashboard'" class=" hover:scale-105 text-red rounded-xl hover:before:bg-redborder-red-500 relative h-[50px] w-40 overflow-hidden border border-[#129661] bg-white px-3 text-[#129661] shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-[#129661] before:transition-all before:duration-500 hover:text-white hover:shadow-[#129661] hover:before:left-0 hover:before:w-full"><span class="relative z-10">Lets Start!</span></button>
     </div>
+    <div>
+        
+    </div>
+    </section>
     <section class="flex justify-center">
         <div class="max-w-4xl pt-10 text-center">
             <h1 class="reveal text-6xl font-bold leading-tight">

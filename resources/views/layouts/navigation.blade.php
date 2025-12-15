@@ -12,7 +12,7 @@
             <!-- Profile Dropdown -->
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
-                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-black bg-white hover:text-[#129661] focus:outline-none transition ease-in-out duration-150">
+                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-black bg-transparent hover:text-[#129661] focus:outline-none transition ease-in-out duration-150">
                         <div>{{ Auth::user()->username }}</div>
                         <div class="ms-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -51,18 +51,18 @@
 
         <!-- Menu Items -->
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-default">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white md:bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="block py-2 px-3 rounded md:p-0 {{ request()->routeIs('dashboard') ? 'text-white bg-[#129661] md:bg-transparent md:text-[#129661]' : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661]' }}" {{ request()->routeIs('dashboard') ? 'aria-current=page' : '' }}>Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="block py-2 px-3 rounded md:p-0 {{ request()->routeIs('dashboard') ? 'text-white bg-[#129661] md:bg-transparent md:text-[#129661]' : 'text-gray-900 md:hover:bg-transparent md:hover:text-[#129661]' }}" {{ request()->routeIs('dashboard') ? 'aria-current=page' : '' }}>Dashboard</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Simulation</a>
+                    <a href="{{ route('simulation.index') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0 {{ request()->routeIs('simulation.index') ? 'text-white bg-[#129661] md:bg-transparent md:text-[#129661]' : 'text-gray-900 md:hover:bg-transparent md:hover:text-[#129661]' }}" {{ request()->routeIs('simulation.index') ? 'aria-current=page' : '' }}>Simulation</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Comparing</a>
+                    <a href="{{ route('simulation.compare') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0 {{ request()->routeIs('simulation.compare') ? 'text-white bg-[#129661] md:bg-transparent md:text-[#129661]' : 'text-gray-900 md:hover:bg-transparent md:hover:text-[#129661]' }}" {{ request()->routeIs('simulation.compare') ? 'aria-current=page' : '' }}>Comparing</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0">Education</a>
+                    <a href="{{ route('simulation.history') }}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#129661] md:p-0 {{ request()->routeIs('simulation.history') ? 'text-white bg-[#129661] md:bg-transparent md:text-[#129661]' : 'text-gray-900 md:hover:bg-transparent md:hover:text-[#129661]' }}" {{ request()->routeIs('simulation.history') ? 'aria-current=page' : '' }}>History</a>
                 </li>
             </ul>
         </div>
@@ -101,3 +101,57 @@
         </div>
     </div>
 </nav>
+        <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector("nav");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+            navbar.classList.remove("bg-transparent");
+            navbar.classList.add("bg-[#f5f5f5]/80", "backdrop-blur");
+        } else {
+            navbar.classList.remove("bg-[#f5f5f5]/80", "backdrop-blur");
+            navbar.classList.add("bg-transparent");
+        }
+    });
+});
+</script>
+<script>
+    const navbar = document.getElementById("navbar");
+    const navbarContent = document.getElementById("navbarContent");
+
+    window.addEventListener("scroll", function () {
+    if (window.scrollY === 0) {
+        // Posisi paling atas → padding besar
+        navbarContent.classList.remove("");
+        navbarContent.classList.add("");
+    } else {
+        // Posisi scroll → padding lebih kecil
+        navbarContent.classList.remove("");
+        navbarContent.classList.add("");
+    }
+});
+
+let lastScrollTop = 0;
+const scrollThreshold = 200;
+
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > scrollThreshold) {
+        if (scrollTop > lastScrollTop) {
+            // Scroll Down
+            navbar.style.top = "-100px";
+            navbar.style.transition = "top 0.4s ease";
+        } else {
+            // Scroll Up
+            navbar.style.top = "0";
+            navbar.style.transition = "top 0.4s ease";
+        }
+    } else {
+        // Dalam threshold, navbar tetap visible
+        navbar.style.top = "0";
+    }
+    lastScrollTop = scrollTop;
+});
+</script>

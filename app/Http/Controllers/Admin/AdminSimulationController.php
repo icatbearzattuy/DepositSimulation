@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Simulation;
+use App\Models\Bank;
 use Illuminate\Http\Request;
 
 class AdminSimulationController extends Controller
@@ -17,16 +18,8 @@ class AdminSimulationController extends Controller
       $query->where('bank_id', $request->bank_id);
     }
 
-    // Filter by date range
-    if ($request->filled('date_from')) {
-      $query->whereDate('waktu_simulasi', '>=', $request->date_from);
-    }
-    if ($request->filled('date_to')) {
-      $query->whereDate('waktu_simulasi', '<=', $request->date_to);
-    }
-
     $simulations = $query->orderBy('waktu_simulasi', 'desc')->paginate(15);
-    $banks = \App\Models\Bank::all();
+    $banks = Bank::all();
 
     return view('admin.simulations.index', compact('simulations', 'banks'));
   }

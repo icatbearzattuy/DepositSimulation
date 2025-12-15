@@ -146,7 +146,6 @@ class SimulationController extends Controller
     public function history()
     {
         $simulations = Simulation::where('user_id', Auth::id())
-            ->with('bank')
             ->latest()
             ->get();
         return view('simulation.history', compact('simulations'));

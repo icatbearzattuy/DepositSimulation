@@ -6,11 +6,12 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminBankController;
 use App\Http\Controllers\Admin\AdminSimulationController;
+use App\Http\Controllers\CetakpdfController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -23,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
     // Simulation Routes
     Route::get('/simulation', [SimulationController::class, 'index'])->name('simulation.index');
-    Route::post('/simulation/calculate', [SimulationController::class, 'calculate'])->name('simulation.calculate');
+    Route::post('/simulation', [SimulationController::class, 'calculate'])->name('simulation.index');
 
     // Compare Routes (SEMUA bank)
     Route::get('/simulation/compare', [SimulationController::class, 'compareIndex'])->name('simulation.compare');
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/simulation/store', [SimulationController::class, 'store'])->name('simulation.store');
     Route::get('/simulation/history', [SimulationController::class, 'history'])->name('simulation.history');
+
+    Route::post('/simulation/pdf', [CetakpdfController::class, 'cetakPdf'])
+        ->name('simulation.pdf');
 });
 
 // ==================== ADMIN ROUTES ====================

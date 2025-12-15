@@ -12,18 +12,12 @@
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen flex items-center justify-center">
+<body class="font-sans antialiased bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="w-full max-w-md">
         <div class="bg-white rounded-2xl shadow-2xl p-8">
             <!-- Logo/Header -->
             <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                </div>
                 <h1 class="text-2xl font-bold text-gray-900">Admin Panel</h1>
-                <p class="text-gray-500 text-sm mt-1">Silakan login untuk melanjutkan</p>
             </div>
 
             <!-- Error Messages -->
@@ -78,12 +72,6 @@
                     Login
                 </button>
             </form>
-
-            <div class="mt-6 text-center">
-                <a href="{{ url('/') }}" class="text-sm text-gray-500 hover:text-blue-600 transition">
-                    ← Kembali ke halaman utama
-                </a>
-            </div>
         </div>
     </div>
 </body>
