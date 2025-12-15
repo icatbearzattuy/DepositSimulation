@@ -17,7 +17,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-white text-black fixed h-full">
             <div class="p-6">
-                <h1 class="text-xl font-bold text-blue-400">Admin Panel</h1>
+                <h1 class="text-xl font-bold text-blue-400">Admin</h1>
                 <p class="text-black text-sm">Deposito Management</p>
             </div>
             

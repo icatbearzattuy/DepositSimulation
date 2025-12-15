@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Bank;
 use App\Models\Simulation;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class SimulationController extends Controller
@@ -145,9 +146,13 @@ class SimulationController extends Controller
 
     public function history()
     {
+        $stats = [
+            'total_simulations' => Simulation::where('user_id', Auth::id())->count(),
+        ];
+
         $simulations = Simulation::where('user_id', Auth::id())
-            ->latest()
+            ->orderBy('waktu_simulasi', 'desc')
             ->get();
-        return view('simulation.history', compact('simulations'));
+        return view('simulation.history', compact('simulations', 'stats'));
     }
 }

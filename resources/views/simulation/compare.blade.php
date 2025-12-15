@@ -17,7 +17,7 @@
                         <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                         </svg>
-                        <span class="text-sm font-medium text-gray-500">Simulasi Deposito</span>
+                        <span class="text-sm font-medium text-gray-500">Comparing Deposit Bank</span>
                     </div>
                 </li>
             </ol>
@@ -28,45 +28,50 @@
             <div class="p-8">
                 <!-- Header -->
                 <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-gray-900">Simulasi Deposito Bank</h2>
-                    <p class="mt-2 text-sm text-gray-600">Bandingkan hasil deposito dari berbagai bank untuk mendapatkan keuntungan terbaik</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Comparing Deposit Bank</h2>
+                    <p class="mt-2 text-sm text-gray-600">Compare deposit yields from various banks to get the best returns</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Form Section -->
                     <div>
                         <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Masukkan Data Simulasi</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Enter Data</h3>
                             
                             <form action="{{ route('simulation.compare') }}" method="POST" class="space-y-6">
                                 @csrf
                                 <!-- Input Nominal -->
                                 <div>
                                     <label for="nominal_deposito" class="block text-sm font-medium text-gray-700 mb-2">
-                                        Nominal Deposito <span class="text-red-500">*</span>
+                                        Deposit Nominal <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium">Rp</span>
                                         <input 
-                                            type="number" 
-                                            name="nominal_deposito" 
-                                            id="nominal_deposito" 
+                                            type="text"
+                                            id="nominal_display"
                                             placeholder="10.000.000"
                                             class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg
                                                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                                                text-sm text-gray-900 placeholder-gray-400
-                                                transition duration-150"
-                                            required
+                                                text-sm text-gray-900 placeholder-gray-400"
+                                            oninput="formatRupiah(this)"
+                                            autocomplete="off"
                                             min="1000000"
+                                            required
+                                        >
+                                        <input 
+                                            type="hidden" 
+                                            name="nominal_deposito" 
+                                            id="nominal_real"
                                         >
                                     </div>
-                                    <p class="mt-1 text-xs text-gray-500">Minimal Rp 1.000.000</p>
+                                    <p class="mt-1 text-xs text-gray-500">Minimum Rp 1.000.000</p>
                                 </div>
 
                                 <!-- Dropdown Jangka Waktu -->
                                 <div x-data="{ open: false, selected: 'Pilih Jangka Waktu', bulan: '' }">
                                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        Jangka Waktu <span class="text-red-500">*</span>
+                                        Deposit Duration <span class="text-red-500">*</span>
                                     </label>
                                     <div class="relative">
                                         <button type="button"
@@ -186,4 +191,16 @@
         </div>
     </div>
 </div>
+<script>
+function formatRupiah(el) {
+    // ambil angka aja
+    let value = el.value.replace(/\D/g, '');
+
+    // simpan angka asli ke hidden input
+    document.getElementById('nominal_real').value = value;
+
+    // format ke rupiah
+    el.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+</script>
 </x-app-layout>

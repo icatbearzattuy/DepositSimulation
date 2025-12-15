@@ -55,7 +55,7 @@
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->user->nama_lengkap ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $sim->bank->nama_bank ?? 'N/A' }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900">Rp {{ number_format($sim->nominal_deposito, 0, ',', '.') }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} bulan</td>
+                            <td class="px-6 py-4 text-sm text-gray-900">{{ $sim->jangka_waktu_bulan }} Bulan</td>
                             <td class="px-6 py-4 text-sm text-blue-600 font-medium">Rp {{ number_format($sim->bunga_diterima, 0, ',', '.') }}</td>
                             <td class="px-6 py-4 text-sm font-semibold text-green-600">Rp {{ number_format($sim->total_akhir, 0, ',', '.') }}</td>
                             <td class="px-6 py-4 text-sm text-gray-500">{{ $sim->waktu_simulasi }}</td>

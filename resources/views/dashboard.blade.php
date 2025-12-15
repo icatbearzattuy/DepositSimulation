@@ -19,8 +19,8 @@
     </nav>
     <h2 class="text-3xl font-bold tracking-tight text-heading md:text-4xl">Welcome To <span class="text-[#129661]">UrDeposite</span>!</h2>
     </div>
-    <section class="mt-16 flex gap-4 ">
-
+    <section class="mt-16 flex  gap-4 ">
+        
     </section>
 </div>
 </x-app-layout>
