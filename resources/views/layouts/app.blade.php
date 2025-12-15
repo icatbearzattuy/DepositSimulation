@@ -39,7 +39,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="pt-16 mx-24">
+            <main class="pt-16">
                 <!-- Global Alerts -->
                 @if (session('success'))
                     <div x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 3000)" 
