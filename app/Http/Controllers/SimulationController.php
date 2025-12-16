@@ -136,7 +136,7 @@ class SimulationController extends Controller
             $request->jangka_waktu_bulan,
         ]);
 
-        return back()->with('success', 'Simulasi berhasil disimpan!');
+        return back()->with('success', 'Simulasi berhasil disimpan! Silahkan lihat history');
     }
 
     public function history()
