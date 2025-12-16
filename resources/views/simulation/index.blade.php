@@ -166,7 +166,7 @@
                                                     class="block w-full text-left px-4 py-3 hover:bg-blue-50 text-sm text-gray-700
                                                         first:rounded-t-lg last:rounded-b-lg transition duration-150"
                                                 >
-                                                    {{ $month }} Months ({{ number_format($month / 12, 1) }} Years)
+                                                    {{ $month }} Months
                                                 </button>
                                             @endforeach
                                         </div>

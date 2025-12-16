@@ -24,7 +24,7 @@
             <nav class="mt-6">
                 <a href="{{ route('admin.dashboard') }}" 
                    class="flex items-center gap-3 px-6 py-3 text-black hover:bg-gray-200 hover:text-black transition
-                          {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 text-black border-r-4 border-blue-500' : '' }}">
+                          {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 text-black' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                     </svg>
@@ -33,7 +33,7 @@
                 
                 <a href="{{ route('admin.banks.index') }}" 
                    class="flex items-center gap-3 px-6 py-3 text-black hover:bg-gray-200 hover:text-black transition
-                          {{ request()->routeIs('admin.banks.*') ? 'bg-gray-200 text-black border-r-4 border-blue-500' : '' }}">
+                          {{ request()->routeIs('admin.banks.*') ? 'bg-gray-200 text-black' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
@@ -42,7 +42,7 @@
                 
                 <a href="{{ route('admin.simulations.index') }}" 
                    class="flex items-center gap-3 px-6 py-3 text-black hover:bg-gray-200 hover:text-black transition
-                          {{ request()->routeIs('admin.simulations.*') ? 'bg-gray-200 text-black border-r-4 border-blue-500' : '' }}">
+                          {{ request()->routeIs('admin.simulations.*') ? 'bg-gray-200 text-black' : '' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                     </svg>
@@ -53,7 +53,7 @@
                 
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="flex items-center gap-3 px-6 py-3 text-black hover:bg-red-600 hover:text-black transition w-full text-left">
+                    <button type="submit" class="flex items-center gap-3 px-6 py-3 text-black hover:bg-red-600 hover:text-white transition w-full text-left">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
