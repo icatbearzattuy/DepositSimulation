@@ -81,14 +81,8 @@ Ikuti langkah-langkah berikut untuk menjalankan project di lokal komputer Anda:
     ```
 
 7.  **Akses Aplikasi**
-    Buka browser dan kunjungi: `http://127.0.0.1:8000`
+    Buka browser dan kunjungi: `http://127.0.0.1:8000 | /admin` 
 
-## 🔒 Akun Default (Opsional)
-
-Jika Anda menjalankan seeder, berikut adalah akun default yang mungkin tersedia (sesuaikan dengan seeder Anda):
-
--   **Admin**: `admin@example.com` / `password`
--   **User**: `user@example.com` / `password`
 
 ## 📝 Lisensi
 
