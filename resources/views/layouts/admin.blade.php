@@ -17,7 +17,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-white text-black fixed h-full">
             <div class="p-6">
-                <h1 class="text-xl font-bold text-blue-400">Admin</h1>
+                <h1 class="text-xl font-bold">Admin</h1>
                 <p class="text-black text-sm">Deposito Management</p>
             </div>
             
@@ -37,7 +37,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
-                    Kelola Bank
+                    Bank Management
                 </a>
                 
                 <a href="{{ route('admin.simulations.index') }}" 
@@ -46,7 +46,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                     </svg>
-                    Simulasi
+                    User Simulation
                 </a>
                 
                 <div class="border-t border-gray-700 my-4"></div>

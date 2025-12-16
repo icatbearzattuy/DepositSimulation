@@ -61,7 +61,7 @@ class SimulationController extends Controller
         ]);
     }
 
-    // Halaman compare SEMUA bank (GET)
+    // compare
     public function compareIndex()
     {
         $banks = Bank::all();
@@ -105,7 +105,7 @@ class SimulationController extends Controller
             ];
         }
 
-        // Sort by total_akhir descending (bank terbaik di atas)
+        // sort by total_akhir descending
         usort($results, function ($a, $b) {
             return $b['total_akhir'] <=> $a['total_akhir'];
         });
@@ -114,10 +114,11 @@ class SimulationController extends Controller
         session([
             'compare_results' => $results,
             'compare_nominal' => $nominal,
-            'compare_jangka_waktu' => $jangka_waktu
+            'compare_jangka_waktu' => $jangka_waktu,
+            'compare_bank_id' => $results[0]['bank_id'],
         ]);
 
-        // Redirect ke halaman compare (GET) - biar bisa di-refresh
+        // Redirect ke compare page
         return redirect()->route('simulation.compare');
     }
     public function store(Request $request)
@@ -128,18 +129,14 @@ class SimulationController extends Controller
             'jangka_waktu_bulan' => 'required|numeric|min:1|max:120',
         ]);
 
-        try {
-            DB::statement('CALL sp_simuldep(?, ?, ?, ?)', [
-                Auth::id(),
-                $request->bank_id,
-                $request->nominal_deposito,
-                $request->jangka_waktu_bulan,
-            ]);
+        DB::statement('CALL sp_simuldep(?, ?, ?, ?)', [
+            Auth::id(),
+            $request->bank_id,
+            $request->nominal_deposito,
+            $request->jangka_waktu_bulan,
+        ]);
 
-            return back()->with('success', 'Simulasi berhasil disimpan!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal menyimpan: ' . $e->getMessage());
-        }
+        return back()->with('success', 'Simulasi berhasil disimpan!');
     }
 
     public function history()

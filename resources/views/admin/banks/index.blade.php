@@ -28,11 +28,11 @@
                 </thead>
                 <tbody class="divide-y divide-gray-100">
                     @forelse($banks as $bank)
-                        <tr class="hover:bg-gray-50">
+                        <tr class="">
                             <td class="px-6 py-4 text-sm text-gray-900">{{ $bank->bank_id }}</td>
                             <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $bank->nama_bank }}</td>
                             <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
+                                <span class="inline-flex items-center px-3 py-1 text-sm font-semibold  text-green-800">
                                     {{ $bank->suku_bunga_dasar }}%
                                 </span>
                             </td>
