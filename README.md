@@ -66,12 +66,22 @@ Ikuti langkah-langkah berikut untuk menjalankan project di lokal komputer Anda:
     php artisan key:generate
     ```
 
-5.  **Migrasi Database**
-    Jalankan migrasi untuk membuat tabel yang diperlukan:
+5.  **Setup Database**
+    
+    Aplikasi ini menyertakan file SQL lengkap dengan Stored Procedure yang dibutuhkan.
+    
+    *   Buat database baru di MySQL (misal: `deposito_larapel`).
+    *   Import file SQL yang berada di direktori `db/`:
+        ```bash
+        # Menggunakan CLI
+        mysql -u root -p nama_database_anda < db/db_deposito_irsyad.sql
+        ```
+        Atau gunakan **phpMyAdmin** / **TablePlus** untuk mengimport file `db/db_deposito_irsyad.sql`.
+
+    *(Opsional: Jika ingin menggunakan migrasi bawaan Laravel, pastikan Anda menangani pembuatan Stored Procedure secara manual)*
     ```bash
     php artisan migrate
     ```
-    *(Catatan: Pastikan Stored Procedure `sp_simuldep` juga dibuat di database Anda jika tidak termasuk dalam migrasi standar)*
 
 6.  **Jalankan Server**
     Jalankan server Laravel dan Vite (untuk aset frontend) secara bersamaan (di terminal terpisah):
